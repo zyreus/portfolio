@@ -80,7 +80,7 @@ export default function App() {
         <h2>Education</h2>
         <div className="card">
           <h3>Bachelor of Science in Information Technology</h3>
-          <p>Maryknoll College of Panabo</p>
+          <p>Davao Del Norte State College</p>
         </div>
       </section>
 
