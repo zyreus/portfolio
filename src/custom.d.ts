@@ -1,5 +1,5 @@
 declare module '*.jsx' {
   import type { ComponentType } from 'react';
-  const component: ComponentType<any>;
+  const component: ComponentType<Record<string, never>>;
   export default component;
 }
