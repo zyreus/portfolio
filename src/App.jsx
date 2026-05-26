@@ -24,78 +24,100 @@ const stats = [
 
 const skills = [
   {
-    icon: "WD",
-    name: "Laravel & PHP",
-    description: "Building structured web apps, dashboards, and management systems.",
+    icon: "FE",
+    name: "Frontend Development",
+    description:
+      "Creating responsive and modern user interfaces with clean and intuitive user experiences.",
   },
   {
-    icon: "JS",
-    name: "JavaScript & React",
-    description: "Creating responsive interfaces with clean component-driven UI.",
+    icon: "BE",
+    name: "Backend Development",
+    description:
+      "Developing scalable server-side applications, APIs, and business logic using Laravel and PHP.",
   },
   {
     icon: "DB",
-    name: "MS SQL & Databases",
-    description: "Designing reliable data structures for practical business workflows.",
+    name: "Database Management",
+    description:
+      "Designing optimized and structured databases for secure and efficient data management.",
   },
   {
     icon: "UX",
     name: "UI/UX Design",
-    description: "Designing simple layouts, clear flows, and polished visual systems.",
-  },
-  {
-    icon: "IT",
-    name: "Technical Support",
-    description: "Troubleshooting systems, networks, hardware, and software issues.",
-  },
-  {
-    icon: "GD",
-    name: "Graphic Design",
-    description: "Producing clean visual assets with Photoshop, Canva, and brand tools.",
+    description:
+      "Building clean and user-friendly digital experiences focused on simplicity and usability.",
   },
 ];
 
 const projects = [
   {
-    title: "MabuHighTrack",
+    title: "Amalgated Lending",
+    website: "https://amalgatedlending.com",
     description:
-      "A student performance and analytics platform for grading, performance tracking, and academic insights.",
-    stack: ["Laravel", "PHP", "JavaScript", "MS SQL"],
+      "A modern lending management platform designed to streamline loan applications, borrower management, payment tracking, and financial workflows through an intuitive and responsive system.",
+    features: [
+      "Loan Management",
+      "Borrower Portal",
+      "Payment Tracking",
+      "Responsive Dashboard",
+      "Admin Management System",
+    ],
+    stack: ["Laravel", "PHP", "MySQL", "JavaScript", "TailwindCSS"],
   },
   {
-    title: "Digital Branding Website",
+    title: "The Amalgated Properties",
+    website: "https://theamalgatedproperties.com",
     description:
-      "A clean company website and social media presence designed to support brand visibility.",
-    stack: ["Wix", "Canva", "Photoshop"],
+      "A modern real estate and property management platform focused on showcasing properties, improving client engagement, and delivering a clean and responsive user experience.",
+    features: [
+      "Property Listings",
+      "Responsive Interface",
+      "Client Inquiry System",
+      "Modern UI/UX",
+      "Admin Dashboard",
+    ],
+    stack: ["Laravel", "PHP", "MySQL", "JavaScript"],
   },
   {
-    title: "Technical Support Workflow",
+    title: "AGC Tek",
+    website: "https://agctek.co",
     description:
-      "A practical support process for handling troubleshooting, documentation, and service requests.",
-    stack: ["Networking", "CSS NCII", "Office"],
+      "A professional technology and digital solutions website designed to present services, strengthen branding, and improve online client engagement through a clean modern interface.",
+    features: [
+      "Corporate Website",
+      "Service Showcase",
+      "Responsive Design",
+      "Professional Branding",
+      "Optimized Performance",
+    ],
+    stack: ["HTML", "CSS", "JavaScript"],
   },
 ];
 
 const services = [
   {
     icon: "01",
-    title: "Web Development",
-    description: "Responsive portfolio, landing page, and business website development.",
+    title: "Web Application Development",
+    description:
+      "Developing scalable and modern web applications tailored for business and management solutions.",
   },
   {
     icon: "02",
     title: "UI/UX Design",
-    description: "Modern layouts, interface polish, and user-friendly design systems.",
+    description:
+      "Designing clean, intuitive, and user-friendly digital experiences with modern interfaces.",
   },
   {
     icon: "03",
     title: "System Development",
-    description: "Academic, office, and management systems built around real workflows.",
+    description:
+      "Building efficient management systems and automated workflows for real-world operations.",
   },
   {
     icon: "04",
     title: "Database Design",
-    description: "Organized data models and database structures for scalable applications.",
+    description:
+      "Creating optimized and structured database architectures for secure and scalable applications.",
   },
 ];
 
@@ -137,11 +159,11 @@ export default function App() {
         <section id="home" className="hero section-shell">
           <div className="hero-copy reveal">
             <span className="eyebrow">FULL STACK DEVELOPER</span>
-            <h1>Building clean and modern digital experiences.</h1>
+            <h1>Building Clean and Modern Digital Experiences</h1>
             <p>
-              I design and develop scalable systems, responsive websites, and
-              user-friendly applications focused on simplicity, usability, and
-              performance.
+              I design and develop scalable web applications, management
+              systems, and modern digital platforms focused on performance,
+              usability, and seamless user experience.
             </p>
 
             <div className="hero-actions">
@@ -199,17 +221,15 @@ export default function App() {
           <div className="about-grid">
             <div className="about-copy glass-card reveal">
               <p>
-                I specialize in building modern web applications and management
-                systems using Laravel, PHP, JavaScript, and modern frontend
-                technologies.
+                I am a passionate full stack developer focused on building
+                clean, modern, and user-friendly digital solutions. I specialize
+                in developing scalable web applications, responsive interfaces,
+                and management systems using Laravel, PHP, JavaScript, and
+                modern frontend technologies.
               </p>
               <p>
-                My focus is creating clean, scalable, and user-friendly systems
-                with smooth user experiences and modern interfaces.
-              </p>
-              <p>
-                I also bring hands-on experience in graphic design, technical
-                support, networking, troubleshooting, and database management.
+                My goal is to create systems that are not only visually polished
+                but also efficient, reliable, and optimized for real-world use.
               </p>
             </div>
 
@@ -227,10 +247,10 @@ export default function App() {
         <section id="skills" className="section-shell section-block">
           <div className="section-heading centered reveal">
             <span className="eyebrow">CAPABILITIES</span>
-            <h2>Skills shaped for practical, polished products.</h2>
+            <h2>Core skills for modern web and system development.</h2>
             <p>
-              A focused set of technical, design, and support skills for building
-              useful systems from concept to delivery.
+              A focused blend of frontend, backend, database, and interface
+              design skills for building polished digital products.
             </p>
           </div>
 
@@ -273,14 +293,22 @@ export default function App() {
 
             <div className="featured-copy">
               <span className="eyebrow">FEATURED PROJECT</span>
-              <h2>MabuHighTrack</h2>
+              <h2>Amalgated Lending</h2>
               <p>
-                A modern student performance and analytics platform designed to
-                streamline grading, performance tracking, and academic insights
-                through intuitive dashboards and automated workflows.
+                A modern lending management platform designed to streamline loan
+                applications, borrower management, payment tracking, and
+                financial workflows through an intuitive and responsive system.
               </p>
+              <a
+                className="btn btn-secondary"
+                href="https://amalgatedlending.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit Website
+              </a>
               <div className="stack-list">
-                {["Laravel", "PHP", "JavaScript", "Analytics", "Dashboards"].map((item) => (
+                {["Laravel", "PHP", "MySQL", "JavaScript", "TailwindCSS"].map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>
@@ -305,6 +333,14 @@ export default function App() {
                 <div className="project-content">
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
+                  <a href={project.website} target="_blank" rel="noopener noreferrer">
+                    Visit Website
+                  </a>
+                  <div className="stack-list">
+                    {project.features.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
                   <div className="stack-list">
                     {project.stack.map((item) => (
                       <span key={item}>{item}</span>
@@ -331,7 +367,7 @@ export default function App() {
         <section id="services" className="section-shell section-block">
           <div className="section-heading centered reveal">
             <span className="eyebrow">SERVICES</span>
-            <h2>Clean solutions for digital products and systems.</h2>
+            <h2>Professional services for modern digital solutions.</h2>
           </div>
 
           <div className="service-grid">
@@ -373,10 +409,10 @@ export default function App() {
         <section id="contact" className="section-shell section-block contact-section">
           <div className="contact-copy reveal">
             <span className="eyebrow">CONTACT</span>
-            <h2>Let's create something meaningful.</h2>
+            <h2>Let's Build Something Meaningful Together</h2>
             <p>
-              Have a project, system, or website in mind? Send a message and I
-              will get back to you as soon as possible.
+              Interested in working together or building a modern digital
+              solution? Feel free to reach out and let's discuss your ideas.
             </p>
 
             <div className="contact-links">
@@ -431,7 +467,7 @@ export default function App() {
             </a>
           ))}
         </div>
-        <p>Copyright 2026 Zyrah Faith C. Gascon. All rights reserved.</p>
+        <p>Building modern and user-focused digital experiences.</p>
       </footer>
     </div>
   );
