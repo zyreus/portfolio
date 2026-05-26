@@ -7,6 +7,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import ContactSection from "./ContactSection.jsx";
 import "./App.css";
 
 const navLinks = [
@@ -312,6 +313,18 @@ function HomePage() {
       <ProjectsPreview />
       <SkillsPreview />
       <CtaSection />
+
+      <section className="section-shell section-block">
+        <div className="section-heading centered reveal">
+          <span className="eyebrow">CONTACT</span>
+          <h2>Let's build something meaningful together.</h2>
+          <p>
+            Interested in working together? Send a message and let's discuss
+            your ideas and projects.
+          </p>
+        </div>
+        <ContactSection />
+      </section>
     </>
   );
 }
@@ -637,54 +650,7 @@ function ContactPage() {
       title="Let's Build Something Meaningful Together"
       description="Interested in working together or building a modern digital solution? Feel free to reach out and let's discuss your ideas and projects."
     >
-      <section className="contact-section compact-contact">
-        <div className="contact-copy reveal">
-          <div className="contact-meta">
-            <article className="glass-card">
-              <span>Email</span>
-              <a href="mailto:zyrahfaithcubagascon@gmail.com">
-                zyrahfaithcubagascon@gmail.com
-              </a>
-            </article>
-            <article className="glass-card">
-              <span>Location</span>
-              <p>Philippines</p>
-            </article>
-            <article className="glass-card">
-              <span>Social Links</span>
-              <SocialLinks />
-            </article>
-          </div>
-        </div>
-
-        <form
-          className="contact-form reveal delay-1"
-          action="mailto:zyrahfaithcubagascon@gmail.com"
-          method="post"
-          encType="text/plain"
-        >
-          <label>
-            Name
-            <input name="name" type="text" placeholder="Your name" required />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" placeholder="you@example.com" required />
-          </label>
-          <label>
-            Message
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Tell me about your project"
-              required
-            />
-          </label>
-          <button className="btn btn-primary" type="submit">
-            Send Message
-          </button>
-        </form>
-      </section>
+      <ContactSection />
     </PageShell>
   );
 }
