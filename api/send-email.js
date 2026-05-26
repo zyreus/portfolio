@@ -62,6 +62,111 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload));
 }
 
+function buildEmailHtml({ name, email, message }) {
+  const escapedName = escapeHtml(name);
+  const escapedEmail = escapeHtml(email);
+  const escapedMessage = escapeHtml(message);
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Portfolio Message</title>
+  <style>
+    @media only screen and (max-width: 640px) {
+      .email-shell {
+        padding: 24px 12px !important;
+      }
+
+      .email-card {
+        width: 100% !important;
+        border-radius: 16px !important;
+      }
+
+      .email-header,
+      .email-body {
+        padding: 28px 22px !important;
+      }
+
+      .email-title {
+        font-size: 26px !important;
+      }
+
+      .email-panel {
+        padding: 20px !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:Arial,sans-serif;color:#111827;">
+  <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f4f5;margin:0;padding:0;">
+    <tr>
+      <td class="email-shell" align="center" style="padding:40px 20px;">
+        <table class="email-card" width="600" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;max-width:600px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+          <tr>
+            <td class="email-header" style="padding:40px;background:#7c3aed;background-image:linear-gradient(135deg,#7c3aed,#8b5cf6);text-align:center;">
+              <p style="margin:0 0 14px 0;color:rgba(255,255,255,0.78);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">
+                Portfolio Inquiry
+              </p>
+              <h1 class="email-title" style="margin:0;color:#ffffff;font-size:32px;line-height:1.2;font-weight:800;letter-spacing:-0.03em;">
+                New Portfolio Message
+              </h1>
+              <p style="margin:12px 0 0 0;color:rgba(255,255,255,0.86);font-size:16px;line-height:1.6;">
+                Someone contacted you through your portfolio website.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="email-body" style="padding:40px;background:#ffffff;">
+              <div class="email-panel" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:16px;padding:24px;margin-bottom:24px;">
+                <p style="margin:0 0 10px 0;font-size:12px;color:#6b7280;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">
+                  Full Name
+                </p>
+                <h2 style="margin:0;color:#111827;font-size:22px;line-height:1.35;font-weight:800;letter-spacing:-0.02em;">
+                  ${escapedName}
+                </h2>
+
+                <div style="height:22px;line-height:22px;">&nbsp;</div>
+
+                <p style="margin:0 0 10px 0;font-size:12px;color:#6b7280;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">
+                  Email Address
+                </p>
+                <a href="mailto:${escapedEmail}" style="color:#7c3aed;text-decoration:none;font-size:18px;font-weight:700;line-height:1.5;word-break:break-word;">
+                  ${escapedEmail}
+                </a>
+              </div>
+
+              <div class="email-panel" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;">
+                <p style="margin:0 0 16px 0;font-size:12px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">
+                  Message
+                </p>
+                <p style="margin:0;font-size:16px;line-height:1.8;color:#111827;white-space:pre-line;">
+                  ${escapedMessage}
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:30px;text-align:center;background:#f9fafb;border-top:1px solid #e5e7eb;">
+              <p style="margin:0;color:#6b7280;font-size:14px;line-height:1.6;">
+                Sent from your portfolio website
+              </p>
+              <p style="margin:8px 0 0 0;color:#9ca3af;font-size:12px;line-height:1.6;">
+                © 2026 Zyreus Portfolio
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return sendJson(res, 405, { success: false, error: "Method not allowed." });
@@ -127,7 +232,7 @@ export default async function handler(req, res) {
       from: emailUser,
       to: emailUser,
       replyTo: email,
-      subject: `New Portfolio Message from ${name}`,
+      subject: `New Portfolio Inquiry — ${name}`,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
@@ -135,13 +240,7 @@ export default async function handler(req, res) {
         "Message:",
         message,
       ].join("\n"),
-      html: `
-        <h2>New Portfolio Message</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
-      `,
+      html: buildEmailHtml({ name, email, message }),
     });
 
     return sendJson(res, 200, {
